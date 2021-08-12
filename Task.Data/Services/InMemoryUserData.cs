@@ -26,6 +26,15 @@ namespace Task.Data.Services
 
         }
 
+        public void Delete(int id)
+        {
+            var user = Get(id);
+            if(user != null)
+            {
+                users.Remove(user);
+            }
+        }
+
         public User Get(int id)
         {
             return users.FirstOrDefault(r => r.Id == id);

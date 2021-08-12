@@ -21,6 +21,13 @@ namespace Task.Data.Services
             db.SaveChanges();
         }
 
+        public void Delete(int id)
+        {
+            var user = db.Users.Find(id);
+            db.Users.Remove(user);
+            db.SaveChanges();
+        }
+
         public User Get(int id)
         {
             return db.Users.FirstOrDefault(r => r.Id == id);

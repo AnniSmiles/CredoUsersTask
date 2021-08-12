@@ -77,6 +77,24 @@ namespace Task.Web.Controllers
             }
             return View(user);
         }
+        
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            var model = db.Get(id);
+            if(model == null)
+            {
+                return HttpNotFound();
+            }
+            return View();
+        }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int id, FormCollection form)
+        {
+            db.Delete(id);
+            return RedirectToAction("Index");
+        }
     }
 }
